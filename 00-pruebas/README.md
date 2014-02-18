@@ -29,12 +29,14 @@ Los nombres de los ficheros que contengan únicamente pruebas suelen llevar el s
 
 # Generación automática de casos de prueba basados en propiedades: PROPER
 ## Instalación
-  Descarga del repositorio:
+Descarga del repositorio:
 	git clone git@github.com:manopapad/proper.git
-  Compilación:
+
+Compilación:
 	dialyzer --build_plt --apps erts kernel stdlib [requiere varios minutos]
 	make all
-  Arranque de la máquina virtual:
+
+Arranque de la máquina virtual:
 	erl -pa $DIRECTORIO_LOCAL_PROPER/ebin
 
 ## Uso
@@ -70,8 +72,10 @@ Esta herramienta forma parte de las librerías OTP
 ## Instalación
 Descarga del repositorio:
 	git clone git@github.com:ramsay-t/Smother.git
+
 Compilación:
 	make
+
 Arranque de la máquina virtual:
 	erl -pa $DIRECTORIO_LOCAL_SMOTHER/ebin
 
