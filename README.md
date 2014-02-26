@@ -5,3 +5,5 @@ Este repositorio contiene el material necesario para la realización de las pra�
 # Estructura
 
 El repositorio se estructura en un directorio por cada práctica.
+
+Los ficheros de los enunciados siguen el formato [markdow](http://en.wikipedia.org/wiki/Markdown).
