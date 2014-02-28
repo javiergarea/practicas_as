@@ -14,7 +14,6 @@
 %%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 %%% GNU General Public License for more details.
 %%% @end
-%%% Created : 30 Oct 2012 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
 -module(boolean).
 
