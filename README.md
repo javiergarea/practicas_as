@@ -1,6 +1,6 @@
 # Resumen
 
-Este repositorio contiene el material necesario para la realización de las praćticas de Erlang en la asignatura de Arquitectura Software: enunciados, pruebas, código inicial, etc
+Este repositorio contiene el material necesario para la realización de las prácticas de Erlang en la asignatura de Arquitectura Software: enunciados, pruebas, código inicial, etc
 
 # Estructura
 
