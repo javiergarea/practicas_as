@@ -98,7 +98,7 @@ Arranque de la máquina virtual:
 # Análisis estático de código: DIALYZER
 ## Inicialización
 
-dialyzer --build_plt --apps erts kernel stdlib
+	dialyzer --build_plt --apps erts kernel stdlib
 
 
 Actualización de la tabla de símbolos:
