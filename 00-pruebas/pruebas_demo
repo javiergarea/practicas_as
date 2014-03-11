@@ -1,0 +1,59 @@
+#!/usr/bin/env escript
+%% -*- erlang -*-
+%%! -pa ./ebin -sname pruebas_demo verbose
+main([KeyWord]) ->
+    try
+        demo(list_to_atom(KeyWord))
+    catch
+        Error:ErrorMessage ->
+            io:format("--> ~p : ~p\n", [Error, ErrorMessage]),
+            usage()
+    end;
+main(_) ->
+    usage().
+
+usage() ->
+    io:format("uso: pruebas_demo (edoc | eunit | proper | cover | smother )]\n"),
+    halt(1).
+
+
+demo(edoc) ->
+	io:format("-- Xerando documentación --\n"),
+	ListOfFiles = ['boolean.erl', 'manipulating.erl', 'adder.erl'],
+	Options = [{dir, 'doc'}],
+	edoc:files(ListOfFiles, Options);
+demo(eunit) ->
+	io:format("-- Executando probas de unidade --\n"),
+	eunit:test(adder),
+	eunit:test(manipulating);
+demo(proper) ->
+	io:format("-- Xerando e executando probas a partir de propiedades --\n"),
+    proper:module(delete_props),
+    proper:module(boolean_props),
+    proper:quickcheck(adder_statem:prop_adder()),
+    proper:quickcheck(adder_positive_statem:prop_adder());
+demo(cover) ->
+	io:format("-- Xerando informe de cobertura de LOC--\n"),
+	cover:start(),
+	cover:compile(boolean),
+	proper:module(boolean),
+	cover:analyse_to_file(boolean, [html]),
+	cover:compile(manipulating),
+	eunit:test(manipulating),
+	cover:analyse_to_file(manipulating, [html]),
+	cover:compile(adder),
+	proper:quickcheck(adder_statem:prop_adder()),
+	cover:analyse_to_file(adder, [html]);
+demo(smother) ->
+	io:format("-- Xerando informe de cobertura MC/DC --\n"),
+	smother:compile(boolean),
+	eunit:test(boolean),
+	smother:analyse_to_file(boolean),
+	smother:compile(manipulating),
+	eunit:test(manipulating),
+	smother:analyse_to_file(manipulating),
+	smother:compile(adder),
+	proper:quickcheck(adder_statem:prop_adder()),
+	smother:analyse_to_file(adder);
+demo(_) ->
+	usage().
