@@ -36,7 +36,7 @@ start() ->
 %% --------------------------------------------------------------------
 stop() ->
     Pid = whereis(adder),
-	unregister(adder),
+    unregister(adder),
     Pid ! stop,
     stopped.
 

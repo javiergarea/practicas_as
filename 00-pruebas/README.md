@@ -113,7 +113,15 @@ Compilación del código con soporte de debug:
 
 Análisis de los binarios:
 
-	dialyzer *.beam -Wunmatched_returns -Werror_handling -Wrace_conditions -Wbehaviours -Wunderspecs
+	dialyzer *.beam
+
+O, si se usan carpetas estándar:
+
+	dialyzer ./ebin
+
+Algunas opciones habituales son:
+
+	dialyzer ./ebin -Wunmatched_returns -Werror_handling -Wrace_conditions -Wunderspecs
 
 También se puede hacer uso de la interfaz gráfica, que se arranca desde el shell Erlang con:
 
