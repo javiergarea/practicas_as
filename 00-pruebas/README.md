@@ -95,6 +95,31 @@ Arranque de la máquina virtual:
 
 
 
+# Análisis estático de código: DIALYZER
+## Inicialización
+
+dialyzer --build_plt --apps erts kernel stdlib
+
+
+Actualización de la tabla de símbolos:
+
+	dialyzer --add_to_plt --apps eunit
+
+## Uso
+
+Compilación del código con soporte de debug:
+
+	erlc +debug_info -o ebin src/*.erl 
+
+Análisis de los binarios:
+
+	dialyzer *.beam -Wunmatched_returns -Werror_handling -Wrace_conditions -Wbehaviours -Wunderspecs
+
+También se puede hacer uso de la interfaz gráfica, que se arranca desde el shell Erlang con:
+
+	dialyzer:gui().
+
+
 # Otros comentarios
 En lugar de arrancar la máquina virtual de erlang con varios paths adicionales, por ejemplo,
 
@@ -104,3 +129,12 @@ Se puede añadir al fichero ~/.erlang:
 
 	code:load_abs("/path/absoluto/hasta/proper").
 	code:load_abs("/path/absoluto/hasta/smother").
+
+# Otras herramientas
+Erlang dispone de un debugger que se arranca desde la shell Erlang con:
+
+	debugger:start().
+
+También dispone de un monitor de recursos que se arranca desde la shell Erlang con:
+
+	observer:start().
