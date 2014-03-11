@@ -117,7 +117,7 @@ O, si se usan carpetas estándar para código y binarios:
 
 Análisis de los binarios:
 
-	dialyzer ./ebin -Wunmatched_returns -Werror_handling -Wrace_conditions -Wbehaviours -Wunderspecs
+	dialyzer ./ebin -Wunmatched_returns -Werror_handling -Wrace_conditions -Wunderspecs
 
 También se puede hacer uso de la interfaz gráfica, que se arranca desde el shell Erlang con:
 
