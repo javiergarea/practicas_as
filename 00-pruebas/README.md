@@ -109,11 +109,15 @@ Actualización de la tabla de símbolos:
 
 Compilación del código con soporte de debug:
 
-	erlc +debug_info -o ebin src/*.erl 
+	erlc +debug_info *.erl 
+
+O, si se usan carpetas estándar para código y binarios:
+
+	erlc +debug_info -o ./ebin src/*.erl
 
 Análisis de los binarios:
 
-	dialyzer *.beam -Wunmatched_returns -Werror_handling -Wrace_conditions -Wbehaviours -Wunderspecs
+	dialyzer ./ebin -Wunmatched_returns -Werror_handling -Wrace_conditions -Wbehaviours -Wunderspecs
 
 También se puede hacer uso de la interfaz gráfica, que se arranca desde el shell Erlang con:
 
