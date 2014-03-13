@@ -16,7 +16,7 @@
 %%%-------------------------------------------------------------------
 -module(delete_props).
 
--export([delete/2]).
+-export([delete/2, list_and_element/0]).
 
 -include_lib("proper/include/proper.hrl").
 
@@ -62,6 +62,13 @@ prop_delete_with_stats() ->
 prop_delete_with_stats2() ->
     ?FORALL({I,L}, {integer(),list(integer())},
 			collect(lists:member(I,L),
+					not lists:member(I, delete(I,L)))).
+
+%---------------------------------------
+
+prop_delete_with_stats3() ->
+    ?FORALL({I,L}, {integer(),list(integer())},
+			collect(ocurrences(I,L),
 					not lists:member(I, delete(I,L)))).
 
 %---------------------------------------
