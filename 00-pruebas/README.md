@@ -45,8 +45,8 @@ Arranque de la máquina virtual:
 
 ## Uso
 
-	c(boolean).
-	c(boolean_props).
+	-include_lib("proper/include/proper.hrl").
+
 	proper:module(boolean_props).
 	proper:module(delete_props).
 
@@ -64,9 +64,7 @@ Esta herramienta forma parte de las librerías OTP
 
 ## Uso
 
-	cover:start().
 	cover:compile(manipulating).
-	c(manipulating_tests).
 	eunit:test(manipulating).
 	cover:analyse_to_file(manipulating,[html]).
 
@@ -89,7 +87,6 @@ Arranque de la máquina virtual:
 ## Uso
 
 	smother:compile("manipulating.erl").
-	c(manipulating_tests).
 	eunit:test(manipulating).
 	smother:analyse_to_file(manipulating).
 
