@@ -36,8 +36,9 @@ prop_b_not() ->
 %% @end
 %%--------------------------------------------------------------------
 prop_b_and() ->
-    ?FORALL({A, B}, {bool(), bool()},
-	    boolean:b_and(A, B) == (A and B)).
+    ?FORALL(A, bool(),
+			?FORALL(B, bool(),
+					boolean:b_and(A, B) == (A and B))).
 
 %%--------------------------------------------------------------------
 %% @doc Test property for operator 'or'.
