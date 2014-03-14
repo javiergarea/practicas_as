@@ -21,42 +21,42 @@
 
 %%--------------------------------------------------------------------
 %% @doc Definición de caso de proba para filter/2
-%% @spec filter_test() -> boolean()
+%% @spec filter() -> boolean()
 %% @end
 %% --------------------------------------------------------------------
-filter_test() ->
+filter() ->
     ?assert([1,2,3] == manipulating:filter([1,2,3,4,5], 3)).
 
 %%--------------------------------------------------------------------
 %% @doc Definición de caso de proba para badfilter/2
-%% @spec badfilter_test() -> boolean()
+%% @spec badfilter() -> boolean()
 %% @end
 %% --------------------------------------------------------------------
-badfilter_test() ->
-    ?assertEqual([1,2,3], manipulating:badfilter([1,2,3,4,5], 3)).
+badfilter() ->
+    ?assertEqual([1,2], manipulating:badfilter([1,2,3,4,5], 3)).
 
 %%--------------------------------------------------------------------
 %% @doc Definición de caso de proba para reverse/1
-%% @spec reverse_test() -> boolean()
+%% @spec reverse() -> boolean()
 %% @end
 %% --------------------------------------------------------------------
-reverse_test() ->
+reverse() ->
     ?assertEqual([3,2,1], manipulating:reverse([1,2,3])).
 
 %%--------------------------------------------------------------------
 %% @doc Definición de caso de proba para concatenate/1
-%% @spec concatenate_test() -> boolean()
+%% @spec concatenate() -> boolean()
 %% @end
 %% --------------------------------------------------------------------
-concatenate_test() ->
-    ?assertMatch([_,_,_,_,five], manipulating:concatenate([[1,2,3], [], [4, five]])).
+concatenate() ->
+    ?assertMatch([_,_,_,_,_], manipulating:concatenate([[1,2,3], [], [4, five]])).
 
 %%--------------------------------------------------------------------
 %% @doc Definición de caso de proba para flatten/1
-%% @spec flatten_test() -> boolean()
+%% @spec flatten() -> boolean()
 %% @end
 %% --------------------------------------------------------------------
-flatten_test() ->
+flatten() ->
     ?assertEqual([1,2,3,4,5,6], manipulating:flatten([[1,[2,[3],[]]], [[[4]]], [5,6]])).
 
 %%--------------------------------------------------------------------
@@ -66,8 +66,8 @@ flatten_test() ->
 %% @end
 %% --------------------------------------------------------------------
 manipulating_test_() ->
-    [{"Filter should filter",   fun filter_test/0},
-     {"Badfilter also filters", fun badfilter_test/0},
-     {"Reverse gives it upside-down", fun reverse_test/0},
-     {"Concatenates joins pieces", fun concatenate_test/0},
-     {"Flatten makes it flat",     fun flatten_test/0}].
+    [{"Filter should filter",   fun filter/0},
+     {"Badfilter also filters", fun badfilter/0},
+     {"Reverse gives it upside-down", fun reverse/0},
+     {"Concatenates joins pieces", fun concatenate/0},
+     {"Flatten makes it flat",     fun flatten/0}].
