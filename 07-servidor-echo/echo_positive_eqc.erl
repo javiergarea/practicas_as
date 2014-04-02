@@ -13,6 +13,7 @@
 -compile(export_all).
 
 -define(TEST_MODULE, echo).
+-define(SERVER_NAME, echo).
 
 %% Initialize the state
 initial_state() ->
@@ -69,7 +70,7 @@ startup() ->
     ok.
 
 cleanup(_Args) ->
-    case whereis(?TEST_MODULE) of
+    case whereis(?SERVER_NAME) of
 	undefined ->
 	    ok;
 	_Pid ->

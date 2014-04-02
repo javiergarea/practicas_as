@@ -49,7 +49,7 @@ add(N) ->
     adder ! {add, N, self()},
     Pid = whereis(adder),
     receive
-	{result, M, Pid} -> M
+        {result, M, Pid} -> M
     end.
 
 
@@ -65,7 +65,10 @@ server(AccTotal) ->
 			From ! {result, N+AccTotal, self()},
 			server(N+AccTotal);
 		stop ->
-			ok
+			ok;
+        _Other ->
+            % flush unwanted messages
+            server(AccTotal)
     end.
 
 %%% ----------------------- %%%
