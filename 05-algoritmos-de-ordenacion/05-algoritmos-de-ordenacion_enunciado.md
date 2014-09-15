@@ -2,7 +2,7 @@ Descripción
 -----------
 
 Para esta práctica debes crear un **módulo `sorting`** que exporte dos
-funciones de ordanción de listas. Ambas funciones reciben como argumento una
+funciones de ordenación de listas. Ambas funciones reciben como argumento una
 lista y la ordenan de la siguiente manera:
 
 * `quicksort/1`
