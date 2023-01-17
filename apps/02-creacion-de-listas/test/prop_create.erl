@@ -6,10 +6,11 @@
 %%% @end
 %%% Created : 26 Feb 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(create_eqc).
+-module(prop_create).
 
 -include_lib("proper/include/proper.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 prop_create() ->
     ?FORALL(I, positive(),
