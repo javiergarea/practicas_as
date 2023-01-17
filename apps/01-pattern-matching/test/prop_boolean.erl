@@ -6,10 +6,11 @@
 %%% @end
 %%% Created : 19 Feb 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(boolean_eqc).
+-module(prop_boolean).
 
 -include_lib("proper/include/proper.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 prop_b_not() ->
     ?FORALL(A,bool(),
