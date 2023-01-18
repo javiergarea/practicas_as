@@ -5,7 +5,7 @@
 
 %%--------------------------------------------------------------------
 %% @doc Create function.
-%% @spec create(Value :: pos_integer()) -> list()
+%% @spec create(Value :: pos_integer()) -> [pos_integer()]
 %% @end
 %%--------------------------------------------------------------------
 create(_Value) ->
@@ -13,7 +13,7 @@ create(_Value) ->
 
 %%--------------------------------------------------------------------
 %% @doc Reverse create function.
-%% @spec reverse_create(Value :: pos_integer()) -> list()
+%% @spec reverse_create(Value :: pos_integer()) -> [pos_integer()]
 %% @end
 %%--------------------------------------------------------------------
 reverse_create(_Value) ->
