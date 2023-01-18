@@ -13,7 +13,7 @@ jobs:
           otp-version: 25.2
           rebar3-version: 3.20.0
       - name: Checks
-        run: >
-          - rebar3 dialyzer
-          - rebar3 proper -c true
-          - rebar3 cover -m 100
+        run: |
+          rebar3 dialyzer
+          rebar3 proper -c true
+          rebar3 cover -m 100
