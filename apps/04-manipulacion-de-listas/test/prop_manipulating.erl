@@ -1,14 +1,16 @@
 %%%-------------------------------------------------------------------
 %%% @author Laura Castro <lcastro@udc.es>
 %%% @copyright (C) 2012, Laura Castro
-%%% @doc Test properties.
+%%% @doc Assignment #4: Manipulating lists
+%%% Test properties.
 %%% @end
 %%% Created : 5 Mar 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(manipulating_eqc).
+-module(prop_manipulating).
 
 -include_lib("proper/include/proper.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 prop_filter() ->
     ?FORALL({L, I}, {list(int()), int()},

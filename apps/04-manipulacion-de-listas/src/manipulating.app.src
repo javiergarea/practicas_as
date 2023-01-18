@@ -1,0 +1,7 @@
+{application, manipulating, [
+    {description, "Manipulating lists"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {manipulating, []}},
+    {env, []}
+]}.
