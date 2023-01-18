@@ -15,5 +15,6 @@ jobs:
       - name: Checks
         run: |
           rebar3 dialyzer
+          rebar3 eunit -v
           rebar3 proper -c true
           rebar3 cover -m 100

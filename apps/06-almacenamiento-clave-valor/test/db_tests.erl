@@ -1,14 +1,15 @@
-%%% @author Laura M. Castro
-%%% @doc
-%%% Unit test module for db.erl using EUnit
+%%%-------------------------------------------------------------------
+%%% @author Laura M. Castro <lcastro@udc.es>
+%%% @copyright (C) 2013, Laura Castro
+%%% @doc Assignment #4: Unit test module for db.erl using EUnit
 %%% @end
-%%% Created :  5 Mar 2013 by Laura M. Castro
-
--module(db_test).
+%%% Created :  5 Mar 2013 by Laura M. Castro <lcastro@udc.es>
+%%%-------------------------------------------------------------------
+-module(db_tests).
 
 -include_lib("eunit/include/eunit.hrl").
 
-escenariosdb_test_() ->
+escenariosdb_test() ->
     {setup,
      fun db:new/0,     % prepara el entorno para la ejecución de la prueba: crea la BD
      fun db:destroy/1, % limpia el entorno después de la ejecución de la prueba: destruye la BD

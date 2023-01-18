@@ -5,10 +5,11 @@
 %%% @end
 %%% Created : 31 Oct 2012 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(db_eqc).
+-module(prop_db).
 
 -include_lib("proper/include/proper.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 -define(TEST_MODULE, db).
 
