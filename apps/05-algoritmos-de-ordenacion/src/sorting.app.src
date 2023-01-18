@@ -1,0 +1,7 @@
+{application, sorting, [
+    {description, "Sorting lists"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {sorting, []}},
+    {env, []}
+]}.

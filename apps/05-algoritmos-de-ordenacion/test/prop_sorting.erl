@@ -5,10 +5,11 @@
 %%% @end
 %%% Created : 5 Mar 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(sorting_eqc).
+-module(prop_sorting).
 
 -include_lib("proper/include/proper.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 prop_quicksort() ->
     ?FORALL(L, list(int()),
