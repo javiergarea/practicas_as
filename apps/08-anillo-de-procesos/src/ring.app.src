@@ -1,0 +1,7 @@
+{application, ring, [
+    {description, "The ring of processes"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {ring, []}},
+    {env, []}
+]}.

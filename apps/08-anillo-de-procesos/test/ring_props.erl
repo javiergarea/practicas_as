@@ -8,7 +8,8 @@
 -module(ring_props).
 
 -include_lib("proper/include/proper.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 %% Módulo de implementación que imos probar
 -define(TEST_MODULE, ring).
@@ -96,4 +97,3 @@ tracer(TraceList) ->
         Other -> 
             tracer([Other|TraceList])
     end.
-
