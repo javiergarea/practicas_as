@@ -6,7 +6,7 @@
 %%% @end
 %%% Created : 08 Jan 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(positive_echo_props).
+-module(prop_positive_echo).
 
 -include_lib("proper/include/proper.hrl").
 

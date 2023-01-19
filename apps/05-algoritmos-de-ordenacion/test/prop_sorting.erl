@@ -5,7 +5,7 @@
 %%% @end
 %%% Created : 5 Mar 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(sorting_props).
+-module(prop_sorting).
 
 -include_lib("proper/include/proper.hrl").
 

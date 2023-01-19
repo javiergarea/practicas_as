@@ -5,7 +5,7 @@
 %%% @end
 %%% Created : 31 Oct 2012 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(db_props).
+-module(prop_db).
 
 -include_lib("proper/include/proper.hrl").
 

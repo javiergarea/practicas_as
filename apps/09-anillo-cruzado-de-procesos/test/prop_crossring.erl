@@ -2,17 +2,17 @@
 %%%-------------------------------------------------------------------
 %%% @author Laura Castro <lcastro@udc.es>
 %%% @copyright (C) 2014, Laura Castro
-%%% @doc Práctica #8: O anel de procesos.
+%%% @doc Práctica #9: O anel de procesos cruzado.
 %%% @end
 %%%-------------------------------------------------------------------
--module(ring_props).
+-module(prop_crossring).
 
 -include_lib("proper/include/proper.hrl").
 
 -compile([export_all, nowarn_export_all]).
 
 %% Módulo de implementación que imos probar
--define(TEST_MODULE, ring).
+-define(TEST_MODULE, crossring).
 
 
 % Xeradores de datos
@@ -55,20 +55,23 @@ creacion(NProcs, Trazas) ->
 
 % (2) Comprobamos que se envía a mensaxe o número de veces axeitado
 envio(NMsgs, Msg, Trazas) ->
-    SendersAndReceivers = [{From, To} || {trace, From, send, {_, What}, To} <- Trazas, What == Msg],
+    SendersAndReceivers = [{From, To} || {trace, From, send, {_, What, _}, To} <- Trazas, What == Msg],
     length(SendersAndReceivers) == NMsgs.
 
 % (3) Comprobamos que se recibe a mensaxe o número de veces axeitado
 recepcion(NMsgs, Msg, Trazas) ->
-    Receivers = [{Who, What} || {trace, Who, 'receive', {_, What}} <- Trazas, What == Msg],
+    Receivers = [{Who, What} || {trace, Who, 'receive', {_, What, _}} <- Trazas, What == Msg],
     length(Receivers) == NMsgs.
 
 % (4) Comprobamos que se destrúen os procesos
 destruccion(NProcs, Trazas) ->
-    Stoppers = [{From, To} || {trace, From, send, stop, To} <- Trazas],
+    Stoppers = [{From, To} || {trace, From, send, stop, To} <- Trazas] ++
+               [{From, To} || {trace, From, send_to_non_existing_process, stop, To} <- Trazas],
     Stopped =  [Who || {trace, Who, 'receive', stop} <- Trazas],
     Exited =  [Who || {trace, Who, exit, normal} <- Trazas],
-    (length(Stoppers) == length(Stopped)) andalso (length(Exited) == NProcs).
+    (((length(Stoppers) == (NProcs+1)) orelse (length(Stoppers) == NProcs)) andalso
+     ((length(Stopped) == (NProcs-1)) orelse (length(Stopped) == 1))        andalso
+      (length(Exited) == NProcs)).
 
 % Outras posibles sub-propiedades:
 % (5) as parellas envío-recepción son correctas (circulares)

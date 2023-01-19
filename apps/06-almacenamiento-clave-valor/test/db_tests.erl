@@ -9,7 +9,7 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
-escenariosdb_test() ->
+escenariosdb_test_() ->
     {setup,
      fun db:new/0,     % prepara el entorno para la ejecución de la prueba: crea la BD
      fun db:destroy/1, % limpia el entorno después de la ejecución de la prueba: destruye la BD
