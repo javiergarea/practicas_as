@@ -18,4 +18,3 @@ prop_quicksort() ->
 prop_mergesort() ->
     ?FORALL(L, list(int()),
 	    sorting:mergesort(L) == lists:sort(L)).
-
