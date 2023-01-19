@@ -2,6 +2,6 @@
     {description, "Key-value db based on lists"},
     {vsn, "0.1.0"},
     {applications, [kernel, stdlib]},
-    {mod, {sorting, []}},
+    {mod, {db, []}},
     {env, []}
 ]}.
