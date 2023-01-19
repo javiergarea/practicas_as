@@ -1,0 +1,7 @@
+{application, echo, [
+    {description, "Echo server"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {echo, []}},
+    {env, []}
+]}.

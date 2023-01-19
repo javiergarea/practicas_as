@@ -1,15 +1,16 @@
 %%%-------------------------------------------------------------------
 %%% @author Laura Castro <lcastro@udc.es>
 %%% @copyright (C) 2012, Laura Castro
-%%% @doc Assignment #7: Test state machine (OLD STYLE).
+%%% @doc Assignment #7: Test state machine (OLD STYLE)
+%%%%                                       (POSITIVE TESTING).
 %%% @end
 %%% Created : 08 Jan 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(echo_eqc).
+-module(prop_positive_echo).
 
 -include_lib("proper/include/proper.hrl").
-%%-include_lib("eqc/include/eqc_statem.hrl").
--compile(export_all).
+
+-compile([export_all, nowarn_export_all]).
 
 -define(TEST_MODULE, echo).
 -define(SERVER_NAME, echo).
@@ -19,10 +20,10 @@ initial_state() ->
     stopped.
 
 %% Command generator, S is the state
-command(_S) ->
-    oneof([{call, ?MODULE, start, []}] ++
-	  [{call, ?MODULE, print, [message()]}] ++
-	  [{call, ?MODULE, stop, []}]).
+command(S) ->
+    oneof([{call, ?TEST_MODULE, start, []} || S == stopped] ++
+	  [{call, ?TEST_MODULE, print, [message()]} || S == started] ++
+	  [{call, ?TEST_MODULE, stop, []} || S == started]).
 
 message() ->
     oneof(["Hola cara de bola",
@@ -32,31 +33,25 @@ message() ->
 	   "Enough is enough"]).
 
 %% Next state transformation, S is the current state
-next_state(_S,_V,{call,?MODULE,start,[]}) ->
+next_state(stopped,_V,{call,?TEST_MODULE,start,[]}) ->
     started;
-next_state(_S,_V,{call,?MODULE,stop,[]}) ->
+next_state(started,_V,{call,?TEST_MODULE,stop,[]}) ->
     stopped;
 next_state(S,_V,{call,_,_,_}) ->
     S.
 
 %% Precondition, checked before command is added to the command sequence
+precondition(started,{call,?TEST_MODULE,start,[]}) ->
+    false;
+precondition(stopped,{call,?TEST_MODULE,print,[_Message]}) ->
+    false;
+precondition(stopped,{call,?TEST_MODULE,stop,[]}) ->
+    false;
 precondition(_S,{call,_,_,_}) ->
     true.
 
 %% Postcondition, checked after command has been evaluated
 %% OBS: S is the state before next_state(S,_,<command>) 
-postcondition(started,{call,_,start,_},Res) ->
-    Res == already_started;
-postcondition(stopped,{call,_,start,_},Res) ->
-    Res == ok;
-postcondition(started,{call,_,print,_},Res) ->
-    Res == ok;
-postcondition(stopped,{call,_,print,_},Res) ->
-    Res == server_not_started;
-postcondition(started,{call,_,stop,_},Res) ->
-    Res == ok;
-postcondition(stopped,{call,_,stop,_},Res) ->
-    Res == already_stopped;
 postcondition(_S,{call,_,_,_},_Res) ->
     true.
 
@@ -69,35 +64,6 @@ prop_echoserver() ->
 		cleanup(State),
 		Res==ok
 	    end).
-
-%% Test function wrappers
-start() ->
-    try	?TEST_MODULE:start() of
-	ok ->
-	    ok
-    catch
-	error:badarg ->
-	    already_started
-    end.
-
-print(Message) ->
-    try	?TEST_MODULE:print(Message) of
-	ok ->
-	    ok
-    catch
-	error:badarg ->
-	    server_not_started
-    end.
-
-stop() ->
-    try	?TEST_MODULE:stop() of
-	ok ->
-	    ok
-    catch
-	error:badarg ->
-	    already_stopped
-    end.
-
 
 %% Private utilitary stuff
 startup() ->
