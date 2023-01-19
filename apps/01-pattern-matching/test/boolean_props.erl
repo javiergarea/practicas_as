@@ -6,7 +6,7 @@
 %%% @end
 %%% Created : 19 Feb 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(prop_boolean).
+-module(boolean_props).
 
 -include_lib("proper/include/proper.hrl").
 

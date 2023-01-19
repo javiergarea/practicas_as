@@ -6,7 +6,7 @@
 %%% @end
 %%% Created : 5 Mar 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(prop_manipulating).
+-module(manipulating_props).
 
 -include_lib("proper/include/proper.hrl").
 

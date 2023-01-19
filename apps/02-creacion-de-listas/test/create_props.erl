@@ -6,7 +6,7 @@
 %%% @end
 %%% Created : 26 Feb 2013 by Laura Castro <lcastro@udc.es>
 %%%-------------------------------------------------------------------
--module(prop_create).
+-module(create_props).
 
 -include_lib("proper/include/proper.hrl").
 
