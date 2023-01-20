@@ -1,0 +1,7 @@
+{application, effects, [
+    {description, "Playing with side effects"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {effects, []}},
+    {env, []}
+]}.

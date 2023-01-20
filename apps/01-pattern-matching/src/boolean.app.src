@@ -1,0 +1,7 @@
+{application, boolean, [
+    {description, "Simple pattern matching"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {boolean, []}},
+    {env, []}
+]}.

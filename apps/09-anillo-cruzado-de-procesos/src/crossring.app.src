@@ -1,0 +1,7 @@
+{application, crossring, [
+    {description, "The ring of crossed processes"},
+    {vsn, "0.1.0"},
+    {applications, [kernel, stdlib]},
+    {mod, {crossring, []}},
+    {env, []}
+]}.
