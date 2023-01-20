@@ -19,3 +19,9 @@ funciones públicas que se incluirán en el propio módulo `echo`:
 
 * `echo:print(Term) -> ok`
   Envía el mensaje de imprimir al servidor.
+
+Notas
+-----
+
+Es importante para el correcto funcionamiento de los tests, que el proceso servidor
+se registre bajo el nombre `echo`.
